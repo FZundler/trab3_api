@@ -69,7 +69,7 @@ router.post("/", async (req, res) => {
     res.status(400).json({ erro: erros.join("; ") })
     return
   }
-
+  
   // 12 é o número de voltas (repetições) que o algoritmo faz
   // para gerar o salt (sal/tempero)
   const salt = bcrypt.genSaltSync(12)
