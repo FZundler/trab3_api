@@ -7,6 +7,7 @@ import clientesRoutes from './routes/clientes';
 import propostasRoutes from './routes/propostas';
 import clientePropostasRoutes from './routes/clientePropostas'; 
 import adminsRoutes from './routes/admins';
+import dashboardRoutes from './routes/dashboard'
 
 const app = express();
 const port = 3004;
@@ -23,6 +24,7 @@ app.use("/clientes", clientesRoutes);
 app.use("/propostas", propostasRoutes);
 app.use("/minhas-propostas", clientePropostasRoutes);
 app.use("/admins", adminsRoutes);
+app.use("/dashboard", dashboardRoutes);
 
 app.get('/', (req, res) => {
   res.send('API: Ecommerce Music Store');
