@@ -1,6 +1,7 @@
   import { PrismaClient } from "@prisma/client"
   import { Router } from "express"
   import nodemailer from "nodemailer"
+  import { verificaToken } from "../middewares/verificaToken"
 
   const prisma = new PrismaClient()
   const router = Router()
@@ -114,18 +115,17 @@
   })
 
   // Rota para deletar proposta
-  router.delete("/:id", async (req, res) => {
+  router.delete("/:id", verificaToken, async (req, res) => {
     const { id } = req.params
+  
     try {
-      await prisma.proposta.delete({
+      const proposta = await prisma.proposta.delete({
         where: { id: Number(id) }
       })
-      res.status(204).json()
+      res.status(200).json(proposta)
     } catch (error) {
-      console.error(error)
-      res.status(400).json({ erro: "Erro ao deletar a proposta." })
+      res.status(400).json(error)
     }
   })
 
   export default router
-3 
