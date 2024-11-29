@@ -71,7 +71,7 @@
     const { resposta } = req.body
 
     if (!resposta) {
-      res.status(400).json({ "erro": "Informe a resposta desta proposta" })
+      res.status(400).json({ "erro": "Informe resposta desta proposta" })
       return
     }
 
