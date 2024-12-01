@@ -20,7 +20,7 @@ function validaSenha(senha: string) {
 
   // .length: retorna o tamanho da string (da senha)
   if (senha.length < 8) {
-    mensa.push("Erro... senha deve possuir, no mínimo, 8 caracteres")
+    mensa.push("Erro... senha deve ter no mínimo 8 caracteres")
   }
 
   // contadores
