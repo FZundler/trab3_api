@@ -46,10 +46,15 @@ router.get('/:clienteId', async (req: Request, res: Response) => {
     return res.status(400).json({ message: "clienteId é obrigatório." });
   }
 
+  // Verificar se clienteId é um número válido, mas manter como string para Prisma
+  if (isNaN(Number(clienteId))) {
+    return res.status(400).json({ message: "clienteId deve ser um número válido." });
+  }
+
   try {
     const propostasDoCliente = await prisma.proposta.findMany({
       where: {
-        clienteId: Number(clienteId), // Garantir que o id seja um número
+        clienteId: String(clienteId), // Convertendo clienteId para string
       },
       include: { produto: true }, // Inclui os dados do produto associado à proposta
     });
